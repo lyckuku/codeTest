@@ -8,7 +8,7 @@ package com.example.statepattern;
  * @since 2024/8/28
  */
 
-public class ReplaceStrategy implements ProcessingStrategy {
+public class RemoveStrategy implements ProcessingStrategy {
     
     @Override
     public String process(String input) {
@@ -23,15 +23,7 @@ public class ReplaceStrategy implements ProcessingStrategy {
                     while (i < result.length() && result.charAt(i) == currentChar) {
                         i++;
                     }
-                    if (start == 0) {
-                        // 前面没有字符可以替换时，直接删除这些字符
-                        result.delete(start, i);
-                    } else {
-                        // 替换为前一个字母
-                        char newChar = (char) (currentChar - 1);
-                        result.replace(start, i, String.valueOf(newChar));
-                    }
-
+                    result.delete(start, i);
                     changed = true;
                     break;
                 }
