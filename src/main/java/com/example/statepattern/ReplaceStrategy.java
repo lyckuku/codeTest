@@ -9,34 +9,17 @@ package com.example.statepattern;
  */
 
 public class ReplaceStrategy implements ProcessingStrategy {
-    
-    @Override
-    public String process(String input) {
-        StringBuilder result = new StringBuilder(input);
-        boolean changed = true;
-        while (changed) {
-            changed = false;
-            for (int i = 0; i < result.length() - 2; i++) {
-                if (result.charAt(i) == result.charAt(i + 1) && result.charAt(i) == result.charAt(i + 2)) {
-                    int start = i;
-                    char currentChar = result.charAt(i);
-                    while (i < result.length() && result.charAt(i) == currentChar) {
-                        i++;
-                    }
-                    if (start == 0) {
-                        // 前面没有字符可以替换时，直接删除这些字符
-                        result.delete(start, i);
-                    } else {
-                        // 替换为前一个字母
-                        char newChar = (char) (currentChar - 1);
-                        result.replace(start, i, String.valueOf(newChar));
-                    }
 
-                    changed = true;
-                    break;
-                }
-            }
+    @Override
+    public String processConsecutiveChars(StringBuilder input, int start, int end, char currentChar) {
+        if (start == 0) {
+            // 如果前面没有字符串了 删除
+            input.delete(start, end);
+        } else {
+            // 替换为前一个字母
+            char newChar = (char) (currentChar - 1);
+            input.replace(start, end, String.valueOf(newChar));
         }
-        return result.toString();
+        return input.toString();
     }
 }

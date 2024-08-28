@@ -2,7 +2,7 @@ package com.example.statepattern.test;
 
 import com.example.statepattern.RemoveStrategy;
 import com.example.statepattern.ReplaceStrategy;
-import com.example.statepattern.StringProcessor;
+import com.example.statepattern.SimpleStringProcessor;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -22,12 +22,12 @@ public class StringProcessorTest {
 
     @Test
     public void testRemoveStrategy() {
-        StringProcessor processor = new StringProcessor(new RemoveStrategy());
-        assertEquals("d", processor.process("aabcccbbad"));
-        assertEquals("abcd", processor.process("abcd"));
-        assertEquals("", processor.process("aaa"));
-        assertEquals("aa", processor.process("aa"));
-        assertEquals("a", processor.process("a"));
+        RemoveStrategy removeStrategy = new RemoveStrategy();
+        assertEquals("d", SimpleStringProcessor.processString("aabcccbbad",removeStrategy));
+        assertEquals("abcd", SimpleStringProcessor.processString("abcd",removeStrategy));
+        assertEquals("", SimpleStringProcessor.processString("aaa",removeStrategy));
+        assertEquals("aa", SimpleStringProcessor.processString("aa",removeStrategy));
+        assertEquals("a", SimpleStringProcessor.processString("a",removeStrategy));
     }
 
     /**
@@ -35,10 +35,11 @@ public class StringProcessorTest {
      */
     @Test
     public void testReplaceStrategy() {
-        StringProcessor processor = new StringProcessor(new ReplaceStrategy());
-        assertEquals("d", processor.process("abcccbad"));
-        assertEquals("abc", processor.process("abc"));
-        assertEquals("", processor.process("aaa"));
-        assertEquals("aa", processor.process("aa"));
+        ReplaceStrategy replaceStrategy = new ReplaceStrategy();
+
+        assertEquals("d", SimpleStringProcessor.processString("abcccbad",replaceStrategy));
+        assertEquals("abc", SimpleStringProcessor.processString("abc",replaceStrategy));
+        assertEquals("", SimpleStringProcessor.processString("aaa",replaceStrategy));
+        assertEquals("aa", SimpleStringProcessor.processString("aa",replaceStrategy));
     }
 }

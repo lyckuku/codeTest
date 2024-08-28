@@ -9,9 +9,14 @@ package com.example.statepattern;
  */
 public interface ProcessingStrategy {
     /**
-     * 字符串操作
-     * @param input
+     * 字符串转换
+     *
+     * @param input 需要转换的字符串
+     * @param start 开始位置
+     * @param end 结束结束位置
+     * @param currentChar  当前字符
      * @return
      */
-    String process(String input);
+    String processConsecutiveChars(StringBuilder input, int start, int end, char currentChar);
+
 }

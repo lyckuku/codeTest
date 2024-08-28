@@ -9,26 +9,10 @@ package com.example.statepattern;
  */
 
 public class RemoveStrategy implements ProcessingStrategy {
-    
+
     @Override
-    public String process(String input) {
-        StringBuilder result = new StringBuilder(input);
-        boolean changed = true;
-        while (changed) {
-            changed = false;
-            for (int i = 0; i < result.length() - 2; i++) {
-                if (result.charAt(i) == result.charAt(i + 1) && result.charAt(i) == result.charAt(i + 2)) {
-                    int start = i;
-                    char currentChar = result.charAt(i);
-                    while (i < result.length() && result.charAt(i) == currentChar) {
-                        i++;
-                    }
-                    result.delete(start, i);
-                    changed = true;
-                    break;
-                }
-            }
-        }
-        return result.toString();
+    public String processConsecutiveChars(StringBuilder input, int start, int end, char currentChar) {
+        input.delete(start, end);
+        return input.toString();
     }
 }
