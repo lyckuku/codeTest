@@ -19,4 +19,5 @@ public interface ProcessingStrategy {
      */
     String processConsecutiveChars(StringBuilder input, int start, int end, char currentChar);
 
+
 }

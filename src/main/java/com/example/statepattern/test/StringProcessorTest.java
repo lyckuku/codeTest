@@ -28,6 +28,7 @@ public class StringProcessorTest {
         assertEquals("", SimpleStringProcessor.processString("aaa",removeStrategy));
         assertEquals("aa", SimpleStringProcessor.processString("aa",removeStrategy));
         assertEquals("a", SimpleStringProcessor.processString("a",removeStrategy));
+
     }
 
     /**
