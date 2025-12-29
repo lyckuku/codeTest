@@ -18,6 +18,7 @@ public class Test02 {
         ArrayList<Integer> integers = new ArrayList<>(new LinkedHashSet<>(Arrays.asList(1222, 1, 1111111)));
         integers.forEach(p->{
             System.out.println(p);
+            System.out.println(p);
         });
 
         List<Integer> newList = Arrays.asList(1, 23, 1).stream().distinct().collect(Collectors.toList());
