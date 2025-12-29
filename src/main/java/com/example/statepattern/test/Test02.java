@@ -14,7 +14,8 @@ public class Test02 {
 
     @Test
     public  void  test1(){
-        ArrayList<Integer> integers = new ArrayList<>(new LinkedHashSet<>(Arrays.asList(1222, 1, 1)));
+
+        ArrayList<Integer> integers = new ArrayList<>(new LinkedHashSet<>(Arrays.asList(1222, 1, 1111111)));
         integers.forEach(p->{
             System.out.println(p);
         });
